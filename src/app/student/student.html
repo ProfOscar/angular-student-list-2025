@@ -1,0 +1,10 @@
+<span [ngStyle]="getStyle(student)">
+    Student {{student.name}} From {{student.city}} IS
+    <!-- <span *ngIf="student.present">Present</span>
+    <span *ngIf="!student.present">Absent</span> -->
+    @if (student.present) {
+    Present
+    } @else {
+    Absent
+    }
+</span>

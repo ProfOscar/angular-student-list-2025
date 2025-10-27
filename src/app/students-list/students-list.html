@@ -1,0 +1,7 @@
+<h2>Student List</h2>
+@for (item of people; track $index) {
+<div class="student-item">
+    <span>{{$index}} - </span>
+    <app-student [student]="item"></app-student>
+</div>
+}
