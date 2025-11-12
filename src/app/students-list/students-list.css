@@ -1,9 +1,41 @@
+.wrapper {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.student-input {
+    margin-bottom: 30px;
+}
+
 .student-input div {
     margin-bottom: 10px;
 }
 
+.add,
+.delete {
+    background-color: #1976d2;
+    padding: 10px;
+    border-radius: 6px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.delete {
+    background-color: #a70319;
+    margin-left: 10px;
+}
+
+.add:disabled,
+.delete:disabled {
+    background-color: darkslategrey;
+    cursor: auto;
+}
+
 .student-list {
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .student-item {

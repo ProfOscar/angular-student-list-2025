@@ -27,26 +27,37 @@ export class StudentsList {
     "Bra", "Fossano", "Alba", "Mondovì", "Cuneo", "Saluzzo"
   ];
 
-  studentName: string = "";
-  studentGender: string = this.generaNumero(1, 3) == 1 ? "M" : "F";
-  studentCity: string = this.cities[this.generaNumero(0, this.cities.length)];
+  newStudent = {
+    name: "",
+    gender: this.generaNumero(1, 3) == 1 ? "M" : "F",
+    city: this.cities[this.generaNumero(0, this.cities.length)],
+    present: false
+  }
 
   onAddStudent() {
-    if (this.studentName.length == 0) 
+    if (this.newStudent.name.length == 0)
       return;
 
-    let newStudent = {
-      name: this.studentName,
-      gender: this.studentGender,
-      city: this.studentCity,
-      present: false
+    this.people.push(this.cloneObject(this.newStudent));
+
+    this.newStudent.name = "";
+    this.newStudent.gender = this.generaNumero(1, 3) == 1 ? "M" : "F";
+    this.newStudent.city = this.cities[this.generaNumero(0, this.cities.length)];
+  }
+
+  onDeleteStudent() {
+    for (let i = 0; i < this.people.length; i++) {
+      if (this.people[i].name == this.newStudent.name) {
+        console.log(i);
+        this.people.splice(i, 1);
+        return
+      }
     }
+  }
 
-    this.people.push(newStudent);
-
-    this.studentName = "";
-    this.studentGender = this.generaNumero(1, 3) == 1 ? "M" : "F";
-    this.studentCity = this.cities[this.generaNumero(0, this.cities.length)];
+  // restituisce un clone dell'oggetto in input
+  cloneObject(obj: object) {
+    return JSON.parse(JSON.stringify(obj))
   }
 
   // estremo superiore escluso

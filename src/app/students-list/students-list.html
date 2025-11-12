@@ -1,34 +1,43 @@
-<h2>Student List</h2>
+<div class="wrapper">
 
-<!-- Aggiunta nuovo studente -->
-<div class="student-input">
-    <div>
-        <label for="txtName">Student name: </label>
-        <input type="text" id="txtName" [(ngModel)]="studentName">
-    </div>
-    <div>
-        <input type="radio" value="M" name="gender" [(ngModel)]="studentGender"> Male
-        <input type="radio" value="F" name="gender" [(ngModel)]="studentGender"> Female
-    </div>
-    <div>
-        <label for="lstCity"></label>
-        <select name="lstCity" id="lstCity" [(ngModel)]="studentCity">
-            @for (item of cities; track $index) {
-            <option value="{{item}}">{{item}}</option>
-            }
-        </select>
-    </div>
-    <button (click)="onAddStudent()">
-        Add Student
-    </button>
-</div>
+    <h2>Student List</h2>
 
-<!-- Visualizza lista studenti -->
-<div class="student-list">
-    @for (item of people; track $index) {
-    <div class="student-item">
-        <span>{{$index}} - </span>
-        <app-student [student]="item"></app-student>
+    <!-- Aggiunta nuovo studente -->
+    <div class="student-input">
+        <div>
+            <label for="txtName">Student name: </label>
+            <input type="text" id="txtName" [(ngModel)]="newStudent.name">
+        </div>
+        <div>
+            <input type="radio" value="M" name="gender" [(ngModel)]="newStudent.gender"> Male
+            <input type="radio" value="F" name="gender" [(ngModel)]="newStudent.gender"> Female
+        </div>
+        <div>
+            <label for="lstCity"></label>
+            <select name="lstCity" id="lstCity" [(ngModel)]="newStudent.city">
+                @for (item of cities; track $index) {
+                <option value="{{item}}">{{item}}</option>
+                }
+            </select>
+        </div>
+        <button class="add" (click)="onAddStudent()" [disabled]="newStudent.name.length<3">
+            Add Student
+        </button>
+        <button class="delete" (click)="onDeleteStudent()">
+            Delete Student
+        </button>
     </div>
-    }
+
+    <hr>
+
+    <!-- Visualizza lista studenti -->
+    <div class="student-list">
+        @for (item of people; track $index) {
+        <div class="student-item">
+            <span>{{$index}} - </span>
+            <app-student [student]="item"></app-student>
+        </div>
+        }
+    </div>
+
 </div>
