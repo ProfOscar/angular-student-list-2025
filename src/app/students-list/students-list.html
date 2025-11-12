@@ -1,7 +1,34 @@
 <h2>Student List</h2>
-@for (item of people; track $index) {
-<div class="student-item">
-    <span>{{$index}} - </span>
-    <app-student [student]="item"></app-student>
+
+<!-- Aggiunta nuovo studente -->
+<div class="student-input">
+    <div>
+        <label for="txtName">Student name: </label>
+        <input type="text" id="txtName" [(ngModel)]="studentName">
+    </div>
+    <div>
+        <input type="radio" value="M" name="gender" [(ngModel)]="studentGender"> Male
+        <input type="radio" value="F" name="gender" [(ngModel)]="studentGender"> Female
+    </div>
+    <div>
+        <label for="lstCity"></label>
+        <select name="lstCity" id="lstCity" [(ngModel)]="studentCity">
+            @for (item of cities; track $index) {
+            <option value="{{item}}">{{item}}</option>
+            }
+        </select>
+    </div>
+    <button (click)="onAddStudent()">
+        Add Student
+    </button>
 </div>
-}
+
+<!-- Visualizza lista studenti -->
+<div class="student-list">
+    @for (item of people; track $index) {
+    <div class="student-item">
+        <span>{{$index}} - </span>
+        <app-student [student]="item"></app-student>
+    </div>
+    }
+</div>

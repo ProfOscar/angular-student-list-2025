@@ -1,4 +1,4 @@
-<span [ngStyle]="getStyle(student)">
+<span [ngStyle]="getStyle(student)" (click)="onStudentClick()">
     Student {{student.name}} From {{student.city}} IS
     <!-- <span *ngIf="student.present">Present</span>
     <span *ngIf="!student.present">Absent</span> -->
